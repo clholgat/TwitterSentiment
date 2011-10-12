@@ -1,0 +1,8 @@
+Sentiment in facial expressions
+Excited - eyebrows
+Emotion - expression
+Degree of certainty - eye contact
+
+Part of speach tagging to determine subject, displayed below with any hash tags. 
+
+Changing colors for?
