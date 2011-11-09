@@ -5,4 +5,6 @@ couch = couchdb.Server()
 db = couch['anew']
 
 for line in reader:
-	db.save(line)
+	key = line['description-word']
+	print(key)
+	db[key] = line
