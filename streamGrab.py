@@ -1,21 +1,26 @@
 
 import tweetstream, couchdb
 
-def getDB():
+def getDB(DB):
 	couch = couchdb.Server()
-	db = couch['twitter_train']
+	db = couch[DB]
 	return db
 	
-def parseTweet(tweet, db):
+def tweetFilter(uname, psswd):
+	stream = tweetstream.SampleStream(uname, psswd)
+	for tweet in stream:
+		if 'user' in tweet.keys() and tweet['user']['lang'] == 'en':
+			yield tweet
+
+def parseTweet(tweet):
 	if 'user' in tweet.keys() and tweet['user']['lang'] == 'en':
-		db.save(tweet)
+		return tweet
 		
 if __name__ == "__main__":
 
-	stream = tweetstream.SampleStream("clholgat", "Jumbothedog12")
-	db = getDB()
+	stream = tweetFilter("clholgat", "Jumbothedog12")
+	db = getDB('twitter_train')
 	for tweet in stream:
-		#print(tweet)
-		parseTweet(tweet, db)
+		db.save(tweet)
 
 
