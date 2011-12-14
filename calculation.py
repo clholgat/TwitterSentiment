@@ -53,7 +53,6 @@ def calcSentiment(agg):
 def normTweet(tweet):
 	if 'text' in tweet.keys():
 		text = tweet['text']
-		print(text)
 	else:
 		return None
 		
@@ -67,7 +66,7 @@ def normTweet(tweet):
 	agg = []
 	
 	for word in words:	
-		if len(word) <= 1:
+		if len(word) <= 2:
 			continue
 			
 		if d.check(word):
@@ -109,7 +108,7 @@ def getAnewSentiment(tweet):
 		return None
 	
 if __name__ == "__main__":
-	stream = tweetFilter('clholgat', 'Jumbothedog12')
+	stream = tweetFilter('SentimentTest', 'passwd')
 	for tweet in stream:
 		#print(tweet['text'])
 		fixed = getAnewSentiment(tweet)
