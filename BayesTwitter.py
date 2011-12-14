@@ -8,11 +8,14 @@ from BayesSentiment import *
 
 class BayesFace(Face):
 
-	def __init__(self):
+	def __init__(self, choose):
 		self.stream = tweetFilter('SentimentTest', 'passwd')
 		self.tweet = None
 		self.bayes = BayesSentiment()
-		self.classifier = self.bayes.getRawClassifier()		
+		if choose == "raw":
+			self.classifier = self.bayes.getRawClassifier()	
+		else:
+			self.classifier = self.bayes.getClassifer()	
 	
 	def idleFunc(self):
 		try:
