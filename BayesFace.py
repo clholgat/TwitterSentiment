@@ -8,7 +8,7 @@ from calculation import *
 class BayesFace(Face):
 
 	def __init__(self):
-		self.stream = tweetFilter('clholgat', 'Jumbothedog12')
+		self.stream = tweetFilter('')
 		self.tweet = None
 	
 	def idleFunc(self):
